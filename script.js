@@ -1,10 +1,13 @@
-
+let Rows=16,
+    cols=16
+    rainbow=false,
+    sunset=false;
 // Buttons container 
      // creating buttons elements    
-const buttonsContainer=document.createElement("div");
-const buttonOne=document.createElement("button");
-const buttonTwo=document.createElement("button");
-const buttonThree=document.createElement("button");
+const buttonsContainer=document.createElement("div")
+     ,buttonOne=document.createElement("button")
+     ,buttonTwo=document.createElement("button")
+     ,buttonThree=document.createElement("button");
      // Naming buttons 
 buttonOne.textContent="Button one ";
 buttonTwo.textContent="Button two ";
@@ -38,3 +41,12 @@ gridContainer.className="grid-container";
 document.body.appendChild(container);
 container.appendChild(mainText);
 container.appendChild(gridContainer);
+
+// Creating divs 
+
+for(i=0;i<Rows;i++){
+     for(j=0;j<cols;j++){
+     let gridDiv=document.createElement("div");
+     gridDiv.className="grid";
+     gridContainer.appendChild(gridDiv);
+}}
