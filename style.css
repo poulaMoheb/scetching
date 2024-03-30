@@ -10,14 +10,14 @@ body{
     font-family: sans-serif;
 }
 .buttons-container{
-    height: 15vh;
+    height: 25vh;
     width: 10vw;
     position: fixed;
     top: 10px;
     right: 10px;
     display: grid;
     gap:2px;    
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr  1fr 1fr 1fr;
 }
 .button{
     background-color: rgb(202, 219, 222);
@@ -43,11 +43,10 @@ body{
     border: 5px solid black ;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
 }
 .grid{
-    border: 1px solid red;
+    border: 1px solid black;
     grid-auto-flow: row;
 
 }
