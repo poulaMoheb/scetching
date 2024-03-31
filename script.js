@@ -1,7 +1,7 @@
 let Rows=16,
     cols=16,
-    rainbowFlag=false,
     blackFlag=true,
+    rainbowFlag=false,
     sunsetFlag=false;
 // Buttons container 
      // creating buttons elements    
@@ -52,16 +52,17 @@ container.appendChild(mainText);
 container.appendChild(gridContainer);
 
 // functions
+      // remove grid pixels
+function removeDiv(){   
+     const gridTextDeleted=document.querySelectorAll(".grid");
+     for(let i=0;i<gridTextDeleted.length;i++)
+          gridTextDeleted[i].remove();
+     } 
       // Creating div like pixels 
-
-function drawingGridContainer(){
-//      const gridTextDeleted=document.querySelectorAll(".grid");
-//      for(let i=0;i<gridTextDeleted.length;i++){
-//           gridText[i].remove();
-// } 
+function drawingGridContainer(row,col){
      let id=0,styleGrid="grid-template-columns: ";
-     for(i=0;i<Rows;i++){
-          for(j=0;j<cols;j++){
+     for(i=0;i<row;i++){
+          for(j=0;j<col;j++){
                let gridDiv=document.createElement("div");
                gridDiv.id=`grid${id}`;
                gridDiv.className="grid";
@@ -73,14 +74,13 @@ function drawingGridContainer(){
      for(let i=0;i<gridText.length;i++){
           gridText[i].addEventListener("mouseenter",(e)=>{
                colorPixel(e.target.id);
-     })
+     });
 }
-     gridContainer.style.cssText=`${styleGrid};`
+     gridContainer.style.cssText=`${styleGrid};`;
 }
       // Coloring pixel
 
 function colorPixel(id){
-     let rgb=0;
      let pixelHovered=document.getElementById(`${id}`);
      if(blackFlag){
      pixelHovered.style.cssText="background-color:black;";
@@ -88,12 +88,26 @@ function colorPixel(id){
      else if(rainbowFlag){
           pixelHovered.style.cssText=`background-color:${randomRGB()};`;
      }
-     else if(sunset){
-          if(rgb>=250 )
-          rgb+10
-          pixelHovered.style.cssText=`background-color:rgb(${rgb},${rgb},${rgb});`;
-     }
+     else if(sunsetFlag){
+               let rgb =0;
+               let rgString= pixelHovered.style.backgroundColor;
+               if(rgString){
+                    let red=rgString.slice(Number(rgString.charAt("(")),Number(rgString.charAt(",")+1));
+                    console.log(rgString.charAt("("));
+               }else{
+                    pixelHovered.style.cssText=`background-color:rgb(${rgb},${rgb},${rgb});`;
+               }
+          }
+     //      console.log(red);
+     //      if(rgb<=250 ){
+     //      rgb+=10;
+     //      if (!rgString)
+     //      else{
+     //      }
+     //      console.log(rgString);
+     // }
 }
+      // Creating random rgb value  
 function randomRGB(){
      red=Math.floor(Math.random()*255);
      green=Math.floor(Math.random()*255);
@@ -108,6 +122,9 @@ function resetFun(id){
      rainbowFlag=false;
      sunsetFlag=false;
      blackFlag=true;
+     Rows=cols=16;
+     removeDiv();
+     drawingGridContainer(Rows,cols);
 }
 // button events
 reset.addEventListener("click",()=>{
@@ -135,15 +152,12 @@ sunset.addEventListener("click",()=>{
 });
 noOfPixels.addEventListener("click",()=>{
      Rows=cols=Number(prompt("enter a number"));
-     console.log(Rows,cols);
-     drawingGridContainer();
-
-
-
+     removeDiv();
+     drawingGridContainer(Rows,cols);
 });
 
 // on page load
-drawingGridContainer();
+drawingGridContainer(Rows,cols);
 
 
 
