@@ -1,3 +1,6 @@
+:root{
+    --pixel-color:#FFFFFF;
+}
 *{
     padding : 0;
     margin: 0;
@@ -48,5 +51,5 @@ body{
 .grid{
     border: 1px solid black;
     grid-auto-flow: row;
-
+    background-color: var(--pixel-color);
 }

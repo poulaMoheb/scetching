@@ -36,17 +36,17 @@ buttonsContainer.appendChild(noOfPixels);
 
 
 // Creating container div
-     // Creating container elements 
+      // Creating container elements 
 const container=document.createElement("div");
 const mainText=document.createElement("h1");
 const gridContainer=document.createElement("div");
-     // Adding text to the elements
+      // Adding text to the elements
 mainText.textContent="Welcome"; 
-     // Give classes to the created elements
+      // Give classes to the created elements
 container.className="container";
 mainText.className="main-text";
 gridContainer.className="grid-container";
-     // Appending container to HTML
+      // Appending container to HTML
 document.body.appendChild(container);
 container.appendChild(mainText);
 container.appendChild(gridContainer);
@@ -60,7 +60,8 @@ function removeDiv(){
      } 
       // Creating div like pixels 
 function drawingGridContainer(row,col){
-     let id=0,styleGrid="grid-template-columns: ";
+     let id=0,
+     styleGrid="grid-template-columns: ";
      for(i=0;i<row;i++){
           for(j=0;j<col;j++){
                let gridDiv=document.createElement("div");
@@ -88,24 +89,22 @@ function colorPixel(id){
      else if(rainbowFlag){
           pixelHovered.style.cssText=`background-color:${randomRGB()};`;
      }
-     else if(sunsetFlag){
-               let rgb =0;
-               let rgString= pixelHovered.style.backgroundColor;
-               if(rgString){
-                    let red=rgString.slice(Number(rgString.charAt("(")),Number(rgString.charAt(",")+1));
-                    console.log(rgString.charAt("("));
-               }else{
-                    pixelHovered.style.cssText=`background-color:rgb(${rgb},${rgb},${rgb});`;
-               }
-          }
-     //      console.log(red);
-     //      if(rgb<=250 ){
-     //      rgb+=10;
-     //      if (!rgString)
-     //      else{
+     // else if(sunsetFlag){
+     //           let rgString= pixelHovered.style..backgroundColor.valueOf();
+     //           console.log("this is the full string "+rgString+".");
+     //           if(rgString){
+     //                if (rgString.includes("rgb")){
+     //                     pixelHovered.style.backgroundColor="#000000";
+     //                }else if(rgString.includes("black")){
+     //                }else{
+     //                     let hexNumber=rgString.slice(rgString.charAt("#")+1,rgString.length);
+     //                }
+     //           }else{
+     //                pixelHovered.style.cssText=`#000000`;
+
+     //           }
      //      }
-     //      console.log(rgString);
-     // }
+      
 }
       // Creating random rgb value  
 function randomRGB(){
@@ -144,12 +143,11 @@ black.addEventListener("click",()=>{
      blackFlag=true;
 
 });
-sunset.addEventListener("click",()=>{
-     rainbowFlag=false;
-     sunsetFlag=true;
-     blackFlag=false;
-
-});
+// sunset.addEventListener("click",()=>{
+//      rainbowFlag=false;
+//      sunsetFlag=true;
+//      blackFlag=false;
+// });
 noOfPixels.addEventListener("click",()=>{
      Rows=cols=Number(prompt("enter a number"));
      removeDiv();
@@ -158,7 +156,7 @@ noOfPixels.addEventListener("click",()=>{
 
 // on page load
 drawingGridContainer(Rows,cols);
-
-
+let x=1000;
+console.log(x.toString(16))
 
 
